@@ -133,7 +133,7 @@ Filtering structured data, querying, spam logic
 Cool memory I'll use later:
 You love well-designed code, don't mind backtracking to stay solid, and are curious about combining front-end and data backend later. 🙌
 
-💡 Concepts Covered (Day 4: Rust)**
+**💡 Concepts Covered (Day 4: Rust)**
 
 - `fn main()` as the entry point
 - `let` for variable binding within function scope
@@ -163,3 +163,18 @@ You love well-designed code, don't mind backtracking to stay solid, and are curi
 
 - Rust ownership/borrowing (coming up later but worth previewing)
 - Practice writing functions (`fn`) that return values
+
+
+🧠 **Concept Covered:(Day 5. Java)**
+if, else if, and else statements
+
+Relational operators (>=, <, ==, etc.)
+
+Nested conditionals
+
+Basic console input using Scanner
+
+Variable declaration & int parsing from user input
+
+Clean program flow logic with feedback messages
+
