@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact Form</title>
+  <style>
+    .hidden { display: none; }
+    .error { color: red; }
+    .success { color: green; }
+    
+  </style>
+</head>
+<body>
+  <h2>Contact Us</h2>
+
+  <form id="contactForm">
+    <label>Name: <input type="text" id="name" /></label><br />
+    <label>Email: <input type="email" id="email" /></label><br />
+    <label>Message: <textarea id="message"></textarea></label><br />
+    <button type="submit">Send</button>
+  </form>
+
+  <p id="feedback" class="hidden"></p>
+
+  <script type="module">
+    const form = document.getElementById("contactForm");
+    const feedback = document.getElementById("feedback");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      if (!email.includes("@") || !email.includes(".")) {
+        feedback.textContent = "❌ Invalid email address.";
+        feedback.className = "error";
+        feedback.classList.remove("hidden");
+        return;
+      }
+
+      if (["buy now", "free", "click here"].some(word => name.toLowerCase().includes(word))) {
+        feedback.textContent = "🚫 Suspicious name detected.";
+        feedback.className = "error";
+        feedback.classList.remove("hidden");
+        return;
+      }
+      if (name.trim() === "" || message.trim() === "") {
+        feedback.textContent = "⚠️ Name and message cannot be empty.";
+        feedback.className = "error";
+        feedback.classList.remove("hidden");
+        return;
+      }
+
+      feedback.textContent = "✅ Form submitted successfully!";
+      feedback.className = "success";
+      feedback.classList.remove("hidden");
+      form.reset(); 
+
+      console.log({ name, email, message });
+    });
+  </script>
+</body>
+</html>

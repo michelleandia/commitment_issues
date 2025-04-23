@@ -1,0 +1,120 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Tabs</title>
+
+ <style>
+  /* Background gradient for the whole page */
+  body {
+    font-family: system-ui, sans-serif;
+    padding: 2rem;
+    margin: 0;
+    background: linear-gradient(to bottom, #FFFFFF, #EBEBEB);
+  }
+
+  /* Tabs Button Container */
+  #tabs_buttons {
+    margin-bottom: 1rem;
+  }
+
+  /* Buttons */
+  #tabs_buttons button {
+    padding: 0.5rem 1.2rem;
+    margin-right: 0.5rem;
+    background-color: #88BFA8;       /* Button background */
+    border: 2px solid #567568;       /* Outline */
+    border-radius: 5px;
+    color: #12263A;                  /* Text color */
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  /* Hover style */
+  #tabs_buttons button:hover {
+    background-color: #76ac97; /* darker hover */
+    transform: translateY(-1px);
+  }
+
+  /* Tab panels */
+  .tab {
+    display: none;
+    padding: 1rem;
+    border: 1px solid #999;
+    background-color: #fff;
+    max-width: 600px;
+    margin: 1rem 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .tab.active {
+    display: block;
+  }
+
+  /* Title Styling */
+  .tab h2 {
+    color: #F06543;  /* Your custom title color */
+    margin-top: 0;
+  }
+  #tabs_buttons button.selected {
+  background-color: #F06543;
+  color: #ffffff;
+  border-color: #12263A;
+}
+
+</style>
+
+</head>
+<body>
+
+  <div id= "tabs_container">
+    <div id="tabs_buttons">
+      <button onclick="showTab('Info')">Info</button>
+      <button onclick="showTab('Reviews')">Reviews</button>
+      <button onclick="showTab('Support')">Support</button>
+    </div>
+    <div id="tabs_content">
+      <div id="Info" class="tab active">
+        <h2>Product Information</h2>
+        <p>This is a great product that you will love!</p>
+      </div>
+      <div id="Reviews" class="tab">
+        <h2>Customer Reviews</h2>
+        <p>Best product ever!</p>
+      </div>
+      <div id="Support" class="tab">
+        <h2>Customer Support</h2>
+        <p>If you have any questions, please contact us.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    function showTab(tabId) {
+  // Hide all tabs
+  const tabs = document.querySelectorAll(".tab");
+  tabs.forEach(tab => {
+    tab.classList.remove("active");
+  });
+
+  // Remove .selected class from all buttons
+  const buttons = document.querySelectorAll("#tabs_buttons button");
+  buttons.forEach(btn => {
+    btn.classList.remove("selected");
+  });
+
+  // Show selected tab
+  const selectedTab = document.getElementById(tabId);
+  selectedTab.classList.add("active");
+
+  // Highlight the clicked button
+  const clickedButton = document.querySelector(`button[onclick="showTab('${tabId}')"]`);
+  if (clickedButton) {
+    clickedButton.classList.add("selected");
+  }
+}
+    </script>
+</body>
+</html>

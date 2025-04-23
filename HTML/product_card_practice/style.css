@@ -1,0 +1,44 @@
+body {
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  width: 300px;
+  text-align: center;
+}
+.product-img {
+  width: 100%;
+  border-radius: 8px;
+}
+.title {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
+.price {
+  font-size: 1.2rem;
+  color: green;
+}
+button {
+  background-color: #008cba;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: #005f7a;
+}
+.cart-msg {
+  margin-top: 0.5rem;
+  color: purple;
+  font-weight: bold;
+}
