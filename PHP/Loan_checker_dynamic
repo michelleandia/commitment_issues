@@ -1,0 +1,41 @@
+<?php
+
+// Prompt the user for credit score
+echo "Enter minimum credit score: ";
+$min_credit_score = intval(trim(fgets(STDIN)));
+
+echo "Enter minimum income: ";
+$min_income = intval(trim(fgets(STDIN)));
+
+// Load borrowers
+$csvFile = fopen("/Users/michelleandia/Desktop/Code/PHP/borrowers_mock.csv", "r");
+$headers = fgetcsv($csvFile);
+$borrowers = [];
+
+while (($row = fgetcsv($csvFile)) !== false) {
+    $borrowers[] = array_combine($headers, $row);
+}
+fclose($csvFile);
+
+// Check function
+function qualifies($credit_score, $income, $min_credit_score, $min_income) {
+    return $credit_score >= $min_credit_score && $income >= $min_income;
+}
+
+// Filter
+$qualified = [];
+foreach ($borrowers as $borrower) {
+    if (qualifies($borrower["credit_score"], $borrower["income"], $min_credit_score, $min_income)) {
+        $qualified[] = $borrower;
+    }
+}
+
+// Save CSV
+$output = fopen("qualified_custom.csv", "w");
+fputcsv($output, $headers);
+foreach ($qualified as $person) {
+    fputcsv($output, $person);
+}
+fclose($output);
+
+echo "Done! Custom-qualified borrowers saved to qualified_custom.csv\n";
